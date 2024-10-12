@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package userpb;
+
+option go_package = "./userpb";
+
+// Define a User message
+message User {
+    int32 id = 1;
+    string name = 2;
+    string email = 3;
+}
+
+// Define a CreateUserRequest message
+message CreateUserRequest {
+    User user = 1;
+}
+
+// Define a CreateUserResponse message
+message CreateUserResponse {
+    User user = 1;
+}
+
+// UserService for user operations
+service UserService {
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+}
