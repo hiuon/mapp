@@ -2,11 +2,10 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"net"
 
-	"hiuon/mapp/userpb"
+	"hiuon/mapp/proto/userpb"
 
 	"google.golang.org/grpc"
 )
@@ -19,7 +18,7 @@ type UserServer struct {
 // CreateUser handles the creation of a user
 func (s *UserServer) CreateUser(ctx context.Context, req *userpb.CreateUserRequest) (*userpb.CreateUserResponse, error) {
 	user := req.GetUser()
-	fmt.Printf("Creating user: %v\n", user)
+	log.Printf("Creating user: %v\n", user)
 
 	// Normally you'd save the user to a database, here we'll just echo it back
 	return &userpb.CreateUserResponse{User: user}, nil
